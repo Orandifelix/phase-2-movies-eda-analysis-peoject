@@ -486,12 +486,12 @@ Why each chart type was chosen over standard bar charts:
 
 Thanks to everyone who worked on this project:
 
-|                                                                                                     | Contributor          | GitHub                                               |
-| --------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------- |
-| <img src="https://github.com/Chelimo-Chebet.png" width="48" height="48" style="border-radius:50%"/> | **Chelimo Chebet**   | [@Chelimo-Chebet](https://github.com/Chelimo-Chebet) |
-| <img src="https://github.com/Orandifelix.png" width="48" height="48" style="border-radius:50%"/>    | **Orandi Felix**     | [@Orandifelix](https://github.com/Orandifelix)       |
-| <img src="https://github.com/symekah1999.png" width="48" height="48" style="border-radius:50%"/>    | **Shadrack Basweti** | [@symekah1999](https://github.com/symekah1999)       |
-| <img src="https://github.com/placeholder.png" width="48" height="48" style="border-radius:50%"/>    | **Richard Oketch**   | [@richard-oketch](https://github.com/richard-oketch) |
+|                                                                                                             | Contributor          | GitHub                                                               |
+| ----------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------- |
+| <img src="https://github.com/Chelimo-Chebet.png" width="48" height="48" style="border-radius:50%"/>         | **Chelimo Chebet**   | [@Chelimo-Chebet](https://github.com/Chelimo-Chebet)                 |
+| <img src="https://github.com/Orandifelix.png" width="48" height="48" style="border-radius:50%"/>            | **Orandi Felix**     | [@Orandifelix](https://github.com/Orandifelix)                       |
+| <img src="https://github.com/symekah1999.png" width="48" height="48" style="border-radius:50%"/>            | **Shadrack Basweti** | [@symekah1999](https://github.com/symekah1999)                       |
+| <img src="https://github.com/richardoketch32806-eng.png" width="48" height="48" style="border-radius:50%"/> | **Richard Oketch**   | [@richardoketch32806-eng](https://github.com/richardoketch32806-eng) |
 
 ---
 
