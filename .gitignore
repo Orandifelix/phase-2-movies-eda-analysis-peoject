@@ -1,60 +1,62 @@
-# =========================
-# Python
-# =========================
+# ── Jupyter Notebook Checkpoints ─────────────────────────────────────────────
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# ── Notebook Output Artifacts ─────────────────────────────────────────────────
+# Saved chart exports from the EDA dashboard
+genre_revenue_analysis.png
+*.png
+*.jpg
+*.jpeg
+
+# Intermediate cleaned datasets written during analysis
+cleaned_tmdb.csv
+cleaned_bom_movie_gross.csv
+cleaned_*.csv
+
+# ── Raw Source Data Files ─────────────────────────────────────────────────────
+# Large data files — should be stored in cloud storage or a data registry,
+# not committed to the repo
+bom.movie_gross.csv
+tmdb.movies.csv
+tn.movie_budgets.csv
+rt.movie_info.tsv
+rt.reviews.tsv
+*.tsv
+*.csv
+
+# ── Python Environment ────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
-*$py.class
+*.pyo
+*.pyd
+.Python
 
 # Virtual environments
 venv/
-.env/
-.envrc
 .venv/
+env/
+.env/
+ENV/
 
-# =========================
-# Jupyter Notebook
-# =========================
-.ipynb_checkpoints
+# ── Package & Dependency Files ────────────────────────────────────────────────
+*.egg-info/
+dist/
+build/
+*.egg
 
-# =========================
-# Data files (IMPORTANT)
-# =========================
-data/raw/
-data/processed/
-
-# Ignore large files
-*.gz
-*.zip
-
-# =========================
-# OS files
-# =========================
+# ── OS & Editor Junk ─────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
-
-# =========================
-# IDE / Editor
-# =========================
-.vscode/
+desktop.ini
 .idea/
-
-# =========================
-# Logs
-# =========================
-*.log
-
-# =========================
-# Environment variables
-# =========================
-.env
-
-# =========================
-# Mac/Linux temp files
-# =========================
+.vscode/
 *.swp
 *.swo
+*~
 
-# =========================
-# Build / cache
-# =========================
-.cache/
+# ── Environment Variables & Secrets ──────────────────────────────────────────
+.env
+.env.*
+secrets.yaml
+secrets.json
