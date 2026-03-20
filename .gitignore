@@ -4,10 +4,10 @@
 
 # ── Notebook Output Artifacts ─────────────────────────────────────────────────
 # Saved chart exports from the EDA dashboard
-genre_revenue_analysis.png
-*.png
-*.jpg
-*.jpeg
+# genre_revenue_analysis.png
+# *.png
+# *.jpg
+# *.jpeg
 
 # Intermediate cleaned datasets written during analysis
 cleaned_bom_movie_gross.csv
@@ -16,12 +16,12 @@ cleaned_*.csv
 # ── Raw Source Data Files ─────────────────────────────────────────────────────
 # Large data files — should be stored in cloud storage or a data registry,
 # not committed to the repo
-bom.movie_gross.csv
-tn.movie_budgets.csv
-rt.movie_info.tsv
-rt.reviews.tsv
-*.tsv
-*.csv
+# bom.movie_gross.csv
+# tn.movie_budgets.csv
+# rt.movie_info.tsv
+# rt.reviews.tsv
+# *.tsv
+# *.csv
 
 # ── Python Environment ────────────────────────────────────────────────────────
 __pycache__/

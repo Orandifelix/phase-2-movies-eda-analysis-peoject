@@ -486,18 +486,21 @@ Why each chart type was chosen over standard bar charts:
 
 Thanks to everyone who worked on this project:
 
-|                                                                                                     | Contributor        | GitHub                                               |
-| --------------------------------------------------------------------------------------------------- | ------------------ | ---------------------------------------------------- |
-| <img src="https://github.com/Chelimo-Chebet.png" width="48" height="48" style="border-radius:50%"/> | **Chelimo Chebet** | [@Chelimo-Chebet](https://github.com/Chelimo-Chebet) |
-| <img src="https://github.com/Orandifelix.png" width="48" height="48" style="border-radius:50%"/>    | **Orandifelix**    | [@Orandifelix](https://github.com/Orandifelix)       |
-| <img src="https://github.com/contributor3.png" width="48" height="48" style="border-radius:50%"/>   | **Contributor 3**  | [@contributor3](https://github.com/contributor3)     |
-| <img src="https://github.com/contributor4.png" width="48" height="48" style="border-radius:50%"/>   | **Contributor 4**  | [@contributor4](https://github.com/contributor4)     |
+|                                                                                                     | Contributor          | GitHub                                               |
+| --------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------- |
+| <img src="https://github.com/Chelimo-Chebet.png" width="48" height="48" style="border-radius:50%"/> | **Chelimo Chebet**   | [@Chelimo-Chebet](https://github.com/Chelimo-Chebet) |
+| <img src="https://github.com/Orandifelix.png" width="48" height="48" style="border-radius:50%"/>    | **Orandi Felix**     | [@Orandifelix](https://github.com/Orandifelix)       |
+| <img src="https://github.com/symekah1999.png" width="48" height="48" style="border-radius:50%"/>    | **Shadrack Basweti** | [@symekah1999](https://github.com/symekah1999)       |
+| <img src="https://github.com/placeholder.png" width="48" height="48" style="border-radius:50%"/>    | **Richard Oketch**   | [@richard-oketch](https://github.com/richard-oketch) |
 
 ---
 
 ### Repository Structure
 
 ```
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── original_data/
 │   ├── bom.movie_gross.csv
 │   ├── tn.movie_budgets.csv
@@ -508,13 +511,17 @@ Thanks to everyone who worked on this project:
 │   ├── cleaned_tn_movie_budgets.csv
 │   ├── cleaned_rt_movie_info.csv
 │   └── cleaned_rt_reviews.csv
-├── chart1_genre.png
-├── chart2_budget.png
-├── chart3_reviews.png
-├── chart4_bonus.png
-├── chart_dashboard_final.png
-├── notebook.ipynb
-└── README.md
+├── public/
+│   ├── chart1_genre.png
+│   ├── chart2_budget.png
+│   ├── chart3_reviews.png
+│   ├── chart4_bonus.png
+│   └── chart_dashboard_final.png
+├── movie_studio_EDA.ipynb
+├── README.md
+├── LICENSE
+├── .gitignore
+└── CONTRIBUTING.md
 ```
 
 ---
