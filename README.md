@@ -470,7 +470,6 @@ Why each chart type was chosen over standard bar charts:
 | ------------------------------ | ------------------------------------------------- | -------------- |
 | **Box Office Mojo**            | Domestic & foreign theatrical releases, 2010–2018 | 3,387 films    |
 | **The Numbers**                | Production budgets and worldwide gross figures    | 5,782 films    |
-| **TMDB**                       | Genre IDs, popularity, and vote averages          | 26,517 films   |
 | **Rotten Tomatoes Movie Info** | MPAA rating, genre, director, box office          | 1,560 films    |
 | **Rotten Tomatoes Reviews**    | Individual critic reviews with fresh/rotten label | 54,432 reviews |
 
