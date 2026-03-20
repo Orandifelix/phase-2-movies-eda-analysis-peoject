@@ -1,0 +1,60 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.envrc
+.venv/
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints
+
+# =========================
+# Data files (IMPORTANT)
+# =========================
+data/raw/
+data/processed/
+
+# Ignore large files
+*.gz
+*.zip
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Environment variables
+# =========================
+.env
+
+# =========================
+# Mac/Linux temp files
+# =========================
+*.swp
+*.swo
+
+# =========================
+# Build / cache
+# =========================
+.cache/
