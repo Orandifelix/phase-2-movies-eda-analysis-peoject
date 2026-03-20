@@ -14,10 +14,10 @@ chart_dashboard_final.png
 
 # ── Cleaned Data Outputs ──────────────────────────────────────────────────────
 # Regenerated automatically when the notebook runs — safe to exclude
-# cleaned_data/cleaned_bom_movie_gross.csv
-# cleaned_data/cleaned_tn_movie_budgets.csv
-# cleaned_data/cleaned_rt_movie_info.csv
-# cleaned_data/cleaned_rt_reviews.csv
+cleaned_data/cleaned_bom_movie_gross.csv
+cleaned_data/cleaned_tn_movie_budgets.csv
+cleaned_data/cleaned_rt_movie_info.csv
+cleaned_data/views.csv
 
 # ── Python ───────────────────────────────────────────────────────────────────
 __pycache__/
