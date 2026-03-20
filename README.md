@@ -233,7 +233,7 @@ In this stage, analytical techniques are applied to identify patterns and relati
 
 ### Chart — Genre Revenue
 
-![Genre Revenue Chart](chart1_genre.png)
+![Genre Revenue Chart](public/chart1_genre.png)
 
 > **Left panel:** Lollipop chart comparing average revenue (coral diamond) vs. median (teal circle) per genre. The gap between the two reveals skew from blockbuster outliers. The shaded band shows ±½ standard deviation around the average.
 > **Right panel:** Individual film scatter for the top 6 genres — dashed lines mark the genre average, revealing how spread out individual film performance is within each genre.
@@ -278,7 +278,7 @@ tn['tier'] = pd.cut(tn['production_budget'], bins=bins, labels=labels)
 
 ### Chart — Budget vs ROI
 
-![Budget ROI Chart](chart2_budget.png)
+![Budget ROI Chart](public/chart2_budget.png)
 
 > **Left panel:** Profit rate by budget tier — green points exceed the 90% threshold. The $100–200M "sweet spot" annotation is clearly marked.
 > **Centre panel:** Median ROI by tier plotted as a purple curve — shows the consistent rise in ROI efficiency with budget up to the $200M+ tier.
@@ -325,7 +325,7 @@ For a new studio, focusing on **$100M–$200M productions** means:
 
 ### Chart — Critical Reception
 
-![Critical Reception Chart](chart3_reviews.png)
+![Critical Reception Chart](public/chart3_reviews.png)
 
 > **Left panel:** Average box office by RT score band with ±1 standard error shading. The green annotation marks the +30% uplift for Certified Fresh films vs. Rotten films. Sample sizes (n=) are shown at the bottom of each band.
 > **Centre panel:** Full scatter of RT score vs. box office — dot size encodes revenue, colour encodes number of reviews (YlOrRd colormap). The blue rolling average and coral regression line reveal the overall trend.
@@ -356,7 +356,7 @@ Critical reception is a **meaningful but not dominant driver** of box office suc
 
 ### Chart — Market Trends, Studios, Ratings & Runtime
 
-![Bonus Analysis Chart](chart4_bonus.png)
+![Bonus Analysis Chart](public/chart4_bonus.png)
 
 > **Top-left:** Dual-axis chart — total market gross ($B) as a blue line, film count as teal bars (2010–2018). Both trends are annotated directly on the chart.
 > **Top-right:** Studio average gross trend lines for BV (Disney), WB, Fox, Universal, and Sony — each studio labeled at its most recent data point.
