@@ -10,7 +10,6 @@ genre_revenue_analysis.png
 *.jpeg
 
 # Intermediate cleaned datasets written during analysis
-cleaned_tmdb.csv
 cleaned_bom_movie_gross.csv
 cleaned_*.csv
 
@@ -18,7 +17,6 @@ cleaned_*.csv
 # Large data files — should be stored in cloud storage or a data registry,
 # not committed to the repo
 bom.movie_gross.csv
-tmdb.movies.csv
 tn.movie_budgets.csv
 rt.movie_info.tsv
 rt.reviews.tsv
