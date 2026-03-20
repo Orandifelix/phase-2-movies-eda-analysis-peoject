@@ -1,4 +1,5 @@
 # 🎬 Box Office Intelligence: EDA for a New Movie Studio
+
 ### Exploratory Data Analysis Report — New Movie Studio Initiative
 
 ---
@@ -18,6 +19,7 @@
 8. [Chart Type Selection Guide](#8-chart-type-selection-guide)
 9. [Final Summary](#9-final-summary)
 10. [Data Sources & Limitations](#10-data-sources--limitations)
+11. [Contributors](#11-contributors)
 
 ---
 
@@ -46,13 +48,13 @@ Specifically, the analysis aims to:
 
 ### 1.4 Success Metrics
 
-| Metric | Description |
-|--------|-------------|
-| **Worldwide Gross Revenue** | Measures total box office performance |
-| **Production Budget** | Represents the cost of producing a film |
-| **Profit** | Calculated as worldwide gross minus production budget |
+| Metric                         | Description                                                               |
+| ------------------------------ | ------------------------------------------------------------------------- |
+| **Worldwide Gross Revenue**    | Measures total box office performance                                     |
+| **Production Budget**          | Represents the cost of producing a film                                   |
+| **Profit**                     | Calculated as worldwide gross minus production budget                     |
 | **Return on Investment (ROI)** | Measures efficiency of investment (`worldwide_gross / production_budget`) |
-| **Profitability Rate** | Percentage of films that generate profit |
+| **Profitability Rate**         | Percentage of films that generate profit                                  |
 
 These metrics allow for a balanced evaluation of both revenue generation and financial efficiency, ensuring that recommendations are not based solely on high earnings but also on sustainable profitability.
 
@@ -60,14 +62,14 @@ These metrics allow for a balanced evaluation of both revenue generation and fin
 
 This project follows the **CRISP-DM** (Cross-Industry Standard Process for Data Mining) framework:
 
-| Phase | What Was Done |
-|-------|--------------|
-| **Business Understanding** | Defined the studio's problem, objectives, and success metrics |
-| **Data Understanding** | Audited all five datasets for quality issues, missing values, and structure |
-| **Data Preparation** | Cleaned financials, handled missing values, exploded genres, engineered ROI features |
-| **Modeling** | Applied EDA techniques — genre groupby, budget tiering, RT score banding, regression |
-| **Evaluation** | Assessed findings against core business questions; validated across datasets |
-| **Deployment** | Compiled a 9-panel strategy dashboard + 3 actionable recommendations |
+| Phase                      | What Was Done                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------------ |
+| **Business Understanding** | Defined the studio's problem, objectives, and success metrics                        |
+| **Data Understanding**     | Audited all five datasets for quality issues, missing values, and structure          |
+| **Data Preparation**       | Cleaned financials, handled missing values, exploded genres, engineered ROI features |
+| **Modeling**               | Applied EDA techniques — genre groupby, budget tiering, RT score banding, regression |
+| **Evaluation**             | Assessed findings against core business questions; validated across datasets         |
+| **Deployment**             | Compiled a 9-panel strategy dashboard + 3 actionable recommendations                 |
 
 ### 1.6 Constraints
 
@@ -81,11 +83,11 @@ Despite these constraints, the analysis provides meaningful insights that can gu
 
 ---
 
-| Item | Detail |
-|------|--------|
-| **Datasets** | Box Office Mojo · The Numbers · RT Movie Info · RT Reviews |
-| **Coverage** | 2010–2018 theatrical releases |
-| **Tools** | Python · pandas · NumPy · Seaborn · Matplotlib · SciPy |
+| Item            | Detail                                                        |
+| --------------- | ------------------------------------------------------------- |
+| **Datasets**    | Box Office Mojo · The Numbers · RT Movie Info · RT Reviews    |
+| **Coverage**    | 2010–2018 theatrical releases                                 |
+| **Tools**       | Python · pandas · NumPy · Seaborn · Matplotlib · SciPy        |
 | **Chart types** | Line · Scatter · KDE · Lollipop · Log-log scatter · Dual-axis |
 
 ---
@@ -96,21 +98,21 @@ This analysis uses multiple datasets containing information on movie performance
 
 ### 2.1 Data Sources
 
-| Dataset | Contents | Used For |
-|---------|----------|----------|
-| **Box Office Mojo (BOM)** | Movie titles, studios, domestic & foreign gross, release year | Analyze overall box office performance and market trends |
-| **The Numbers (TN)** | Production budgets, domestic & worldwide gross | Calculate profitability and return on investment (ROI) |
-| **Rotten Tomatoes Movie Info (RT Info)** | Genre, MPAA rating, runtime, box office, release dates | Categorize films and enrich analysis |
-| **Rotten Tomatoes Reviews (RT Reviews)** | Critic reviews with fresh/rotten labels | Measure critical reception per film |
+| Dataset                                  | Contents                                                      | Used For                                                 |
+| ---------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------- |
+| **Box Office Mojo (BOM)**                | Movie titles, studios, domestic & foreign gross, release year | Analyze overall box office performance and market trends |
+| **The Numbers (TN)**                     | Production budgets, domestic & worldwide gross                | Calculate profitability and return on investment (ROI)   |
+| **Rotten Tomatoes Movie Info (RT Info)** | Genre, MPAA rating, runtime, box office, release dates        | Categorize films and enrich analysis                     |
+| **Rotten Tomatoes Reviews (RT Reviews)** | Critic reviews with fresh/rotten labels                       | Measure critical reception per film                      |
 
 ### 2.2 Audit Findings
 
-| Dataset | Key Issue Found |
-|---------|----------------|
-| BOM | `foreign_gross` missing 39.8% of values; stored as mixed string/float |
-| TN | All money columns stored as `'$1,234,567'` strings — need parsing |
-| RT Info | `genre` is pipe-delimited (`'Action\|Drama'`); `box_office` missing 78% |
-| RT Reviews | Special characters require `encoding='latin-1'` |
+| Dataset    | Key Issue Found                                                         |
+| ---------- | ----------------------------------------------------------------------- |
+| BOM        | `foreign_gross` missing 39.8% of values; stored as mixed string/float   |
+| TN         | All money columns stored as `'$1,234,567'` strings — need parsing       |
+| RT Info    | `genre` is pipe-delimited (`'Action\|Drama'`); `box_office` missing 78% |
+| RT Reviews | Special characters require `encoding='latin-1'`                         |
 
 ### 2.3 Imports
 
@@ -147,6 +149,7 @@ The data preparation phase focused on resolving data quality issues identified d
 ### 3.2 Data Cleaning
 
 #### Currency Conversion
+
 Financial columns in the TN dataset (`production_budget`, `domestic_gross`, `worldwide_gross`) were stored as strings with `$` and `,`. These were stripped and cast to `float`.
 
 ```python
@@ -155,10 +158,12 @@ for col in ['production_budget', 'domestic_gross', 'worldwide_gross']:
 ```
 
 #### Handling Missing Values
+
 - `foreign_gross` in BOM filled with `0` (no reported international revenue)
 - Rows with missing `domestic_gross` dropped (key revenue metric)
 
 #### Filtering Invalid Data
+
 Rows with zero or negative `production_budget` or `worldwide_gross` were removed to prevent distortions in ROI and profitability calculations.
 
 ### 3.3 Genre Processing
@@ -191,12 +196,12 @@ tn['ww_m']     = tn['worldwide_gross']   / 1e6
 
 ### 3.5 Cleaning Summary
 
-| Dataset | Before | After | Key Change |
-|---------|--------|-------|------------|
-| BOM | 3,387 rows | 3,359 rows | Dropped 28 null `domestic_gross`; filled 1,350 `foreign_gross` with 0 |
-| TN | 5,782 rows | 5,415 rows | Dropped zero-budget/zero-gross rows; added `roi` + `profitable` columns |
-| RT Info | 1,560 rows | 3,581 genre rows | Exploded pipe-delimited genres |
-| RT Reviews | 54,432 rows | 1,135 films scored | Aggregated to `fresh_pct` per film |
+| Dataset    | Before      | After              | Key Change                                                              |
+| ---------- | ----------- | ------------------ | ----------------------------------------------------------------------- |
+| BOM        | 3,387 rows  | 3,359 rows         | Dropped 28 null `domestic_gross`; filled 1,350 `foreign_gross` with 0   |
+| TN         | 5,782 rows  | 5,415 rows         | Dropped zero-budget/zero-gross rows; added `roi` + `profitable` columns |
+| RT Info    | 1,560 rows  | 3,581 genre rows   | Exploded pipe-delimited genres                                          |
+| RT Reviews | 54,432 rows | 1,135 films scored | Aggregated to `fresh_pct` per film                                      |
 
 ---
 
@@ -208,12 +213,12 @@ In this stage, analytical techniques are applied to identify patterns and relati
 
 ### 4.2 Core Business Questions
 
-| Question | Approach |
-|----------|----------|
-| Which genres generate the highest revenue? | Genre groupby on RT Info — avg & total box office |
-| Does budget size drive ROI? | Budget tier binning on TN — median ROI & profit rate |
-| Does quality (RT score) drive revenue? | Score band analysis on merged RT datasets |
-| Which genres are consistently profitable? | Cross-analysis of genre + profitability flag |
+| Question                                   | Approach                                             |
+| ------------------------------------------ | ---------------------------------------------------- |
+| Which genres generate the highest revenue? | Genre groupby on RT Info — avg & total box office    |
+| Does budget size drive ROI?                | Budget tier binning on TN — median ROI & profit rate |
+| Does quality (RT score) drive revenue?     | Score band analysis on merged RT datasets            |
+| Which genres are consistently profitable?  | Cross-analysis of genre + profitability flag         |
 
 ---
 
@@ -237,8 +242,8 @@ In this stage, analytical techniques are applied to identify patterns and relati
 
 - **Sci-Fi / Fantasy** leads all genres at **$80.9M average** per film. The gap between mean and median signals a few mega-hits pulling the average up — but even the median is strong.
 - **Action & Adventure** offers the best combination of volume (366 films) and strong average ($62.3M).
-- **Animation** has only 47 films but is the most *consistent* genre — almost no animated wide releases failed commercially in this dataset.
-- **Comedy and Drama** dominate *total* market size due to sheer volume, but their per-film averages ($41.9M and $28.3M) make them inefficient for a new studio that cannot yet produce at scale.
+- **Animation** has only 47 films but is the most _consistent_ genre — almost no animated wide releases failed commercially in this dataset.
+- **Comedy and Drama** dominate _total_ market size due to sheer volume, but their per-film averages ($41.9M and $28.3M) make them inefficient for a new studio that cannot yet produce at scale.
 - **Horror** earns just $26.4M on average but has exceptional ROI potential at micro-budgets — addressed in Recommendation 2.
 
 ### Key Insight
@@ -248,6 +253,7 @@ Genre choice significantly influences revenue potential, but the optimal strateg
 ### Strategic Implication
 
 For a new studio, the most attractive genres are those that:
+
 - Deliver **high average revenue per film** (Sci-Fi, Fantasy, Action)
 - Offer **consistent performance** (Animation)
 - Can be executed without requiring large-scale production volume
@@ -280,17 +286,17 @@ tn['tier'] = pd.cut(tn['production_budget'], bins=bins, labels=labels)
 
 ### Finding 2
 
-| Budget Tier | Films | Profit Rate | Median ROI |
-|-------------|-------|------------|------------|
-| < $10M | — | 61% | ~1.5× |
-| $10–50M | — | 66% | ~1.6× |
-| $50–100M | — | 75% | ~2.1× |
-| **$100–200M** | — | **93.1%** | **2.79×** |
-| $200M+ | — | 95.1% | 3.43× |
+| Budget Tier   | Films | Profit Rate | Median ROI |
+| ------------- | ----- | ----------- | ---------- |
+| < $10M        | —     | 61%         | ~1.5×      |
+| $10–50M       | —     | 66%         | ~1.6×      |
+| $50–100M      | —     | 75%         | ~2.1×      |
+| **$100–200M** | —     | **93.1%**   | **2.79×**  |
+| $200M+        | —     | 95.1%       | 3.43×      |
 
 - The **$100M–$200M tier** achieves a **93.1% profit rate** — 93 of every 100 films recoup their production budget in worldwide theatrical gross.
 - **Median ROI of 2.79×** means a $150M film earns ~$418M worldwide at the median.
-- **Micro and Low tiers (under $50M)** have surprisingly *low* profit rates (61–66%), contradicting the assumption that cheap films are lower risk.
+- **Micro and Low tiers (under $50M)** have surprisingly _low_ profit rates (61–66%), contradicting the assumption that cheap films are lower risk.
 - The **$200M+ tier** has the best absolute numbers but requires established distribution infrastructure — not suitable for a new studio's first slate.
 - The log-log scatter confirms a clear power-law relationship: bigger budgets cluster near the break-even line, while small-budget films scatter widely below it.
 
@@ -301,6 +307,7 @@ There is a clear **"sweet spot" in the $100M–$200M range** where profitability
 ### Strategic Implication
 
 For a new studio, focusing on **$100M–$200M productions** means:
+
 - Profitability is high and consistent
 - Risk is manageable compared to both lower and higher budget tiers
 - Returns are sufficient to support long-term growth and slate expansion
@@ -326,18 +333,18 @@ For a new studio, focusing on **$100M–$200M productions** means:
 
 ### Finding 3
 
-| RT Score Band | Avg Box Office | vs. Rotten |
-|---------------|---------------|------------|
-| 0–40% (Rotten) | $36.1M | baseline |
-| 41–60% (Mixed) | $39.2M | +9% |
-| 61–75% (Fresh) | $33.8M | −6% |
-| 76–90% (Good) | $41.5M | +15% |
-| **91–100% (Certified Fresh)** | **$46.9M** | **+30%** |
+| RT Score Band                 | Avg Box Office | vs. Rotten |
+| ----------------------------- | -------------- | ---------- |
+| 0–40% (Rotten)                | $36.1M         | baseline   |
+| 41–60% (Mixed)                | $39.2M         | +9%        |
+| 61–75% (Fresh)                | $33.8M         | −6%        |
+| 76–90% (Good)                 | $41.5M         | +15%       |
+| **91–100% (Certified Fresh)** | **$46.9M**     | **+30%**   |
 
 - **Certified Fresh films** earn **+30% more** on average than Rotten films.
 - The 61–75% band underperforms because it contains many **prestige or limited-release films** with small theatrical footprints — good reviews, low distribution.
 - The **KDE chart** confirms high-grossing films cluster at higher critic scores.
-- **R² is low** — franchise blockbusters can earn enormous grosses regardless of reviews, but for the *majority* of films, quality is a meaningful revenue driver.
+- **R² is low** — franchise blockbusters can earn enormous grosses regardless of reviews, but for the _majority_ of films, quality is a meaningful revenue driver.
 
 ### Key Insight
 
@@ -358,12 +365,12 @@ Critical reception is a **meaningful but not dominant driver** of box office suc
 
 ### Bonus Findings
 
-| Area | Finding |
-|------|---------|
-| **Market Trend** | Total box office grew 26% from $24.5B (2010) to $30.9B (2017). Film count peaked in 2015 (449) then fell — avg per-film gross rose sharply, signalling concentration on fewer tent-poles. |
-| **Studio Benchmark** | Disney (BV) earns $417M avg per film — **2× the nearest rival**. Blueprint: owned IP, family content, quality. |
-| **MPAA Rating** | PG-13 earns $56.5M avg vs. $23.2M for R-rated. Target PG-13 for all tent-pole greenlights. |
-| **Runtime** | Positive correlation between runtime and box office — longer films (120–150 min) tend to earn more, acting as a proxy for production scale and perceived value. |
+| Area                 | Finding                                                                                                                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Market Trend**     | Total box office grew 26% from $24.5B (2010) to $30.9B (2017). Film count peaked in 2015 (449) then fell — avg per-film gross rose sharply, signalling concentration on fewer tent-poles. |
+| **Studio Benchmark** | Disney (BV) earns $417M avg per film — **2× the nearest rival**. Blueprint: owned IP, family content, quality.                                                                            |
+| **MPAA Rating**      | PG-13 earns $56.5M avg vs. $23.2M for R-rated. Target PG-13 for all tent-pole greenlights.                                                                                                |
+| **Runtime**          | Positive correlation between runtime and box office — longer films (120–150 min) tend to earn more, acting as a proxy for production scale and perceived value.                           |
 
 ### Overall Insight
 
@@ -381,14 +388,14 @@ The final deliverable is a **9-panel strategy dashboard** that consolidates all 
 
 **KPI Headlines:**
 
-| Metric | Value | Context |
-|--------|-------|---------|
-| Films analysed | 3,359 | BOM dataset |
-| Top genre avg | $80.9M | Sci-Fi / Fantasy |
-| Best-tier profit rate | 93% | $100–200M tier |
-| Quality premium | +30% revenue | Certified Fresh |
-| Peak market | $30.9B | 2017 |
-| Avg RT fresh score | 57.7% | All scored films |
+| Metric                | Value        | Context          |
+| --------------------- | ------------ | ---------------- |
+| Films analysed        | 3,359        | BOM dataset      |
+| Top genre avg         | $80.9M       | Sci-Fi / Fantasy |
+| Best-tier profit rate | 93%          | $100–200M tier   |
+| Quality premium       | +30% revenue | Certified Fresh  |
+| Peak market           | $30.9B       | 2017             |
+| Avg RT fresh score    | 57.7%        | All scored films |
 
 ---
 
@@ -396,30 +403,30 @@ The final deliverable is a **9-panel strategy dashboard** that consolidates all 
 
 ### Recommendation 1 — Lead with Sci-Fi, Action & Animation
 
-| Action | Detail |
-|--------|--------|
+| Action                    | Detail                                                                     |
+| ------------------------- | -------------------------------------------------------------------------- |
 | **Primary genre targets** | Sci-Fi/Fantasy ($80.9M avg), Action/Adventure ($62.3M), Animation ($56.2M) |
-| **Rating target** | PG-13 for max audience breadth ($56.5M avg vs. $23.2M for R) |
-| **Genres to avoid early** | Drama ($28.3M avg), Documentary ($11.9M) |
-| **Secondary play** | Horror micro-budget ($1–5M) for cash flow and ROI |
+| **Rating target**         | PG-13 for max audience breadth ($56.5M avg vs. $23.2M for R)               |
+| **Genres to avoid early** | Drama ($28.3M avg), Documentary ($11.9M)                                   |
+| **Secondary play**        | Horror micro-budget ($1–5M) for cash flow and ROI                          |
 
 ### Recommendation 2 — Budget $100M–$200M per Tent-Pole
 
-| Action | Detail |
-|--------|--------|
-| **Primary budget range** | $100M–$200M per tent-pole production |
-| **Expected returns** | 2.79× median ROI = $279M–$558M worldwide on a $100–200M film |
+| Action                     | Detail                                                        |
+| -------------------------- | ------------------------------------------------------------- |
+| **Primary budget range**   | $100M–$200M per tent-pole production                          |
+| **Expected returns**       | 2.79× median ROI = $279M–$558M worldwide on a $100–200M film  |
 | **Micro-budget exception** | $1M–$10M horror films for slate diversification and cash flow |
-| **Avoid** | $10M–$50M range: 66% profit rate — worst risk-adjusted tier |
+| **Avoid**                  | $10M–$50M range: 66% profit rate — worst risk-adjusted tier   |
 
 ### Recommendation 3 — Invest in Quality — Target Certified Fresh
 
-| Action | Detail |
-|--------|--------|
-| **Revenue upside** | +30% avg revenue for Certified Fresh vs. Rotten films |
-| **Hire strategy** | Directors with strong critical track records for first 3 films |
-| **Script investment** | Budget $2M–$5M for script development before greenlight |
-| **Release policy** | Delay release rather than cut quality — date flexibility is a competitive advantage |
+| Action                | Detail                                                                              |
+| --------------------- | ----------------------------------------------------------------------------------- |
+| **Revenue upside**    | +30% avg revenue for Certified Fresh vs. Rotten films                               |
+| **Hire strategy**     | Directors with strong critical track records for first 3 films                      |
+| **Script investment** | Budget $2M–$5M for script development before greenlight                             |
+| **Release policy**    | Delay release rather than cut quality — date flexibility is a competitive advantage |
 
 ---
 
@@ -427,31 +434,31 @@ The final deliverable is a **9-panel strategy dashboard** that consolidates all 
 
 Why each chart type was chosen over standard bar charts:
 
-| Chart Type | Used For | Why Better Than Bar Chart |
-|------------|----------|---------------------------|
-| **Lollipop** | Genre avg vs. median | Shows two values simultaneously; reduces ink; reveals skew when mean ≠ median |
-| **Line + fill** | Profit rate & ROI by budget tier | Makes trend direction unmistakable; fill communicates area-under-curve |
-| **Log-log scatter** | Budget vs. worldwide gross | Compresses 5 orders of magnitude; reveals power-law structure invisible on linear axes |
-| **Scatter + rolling avg** | RT score vs. box office | Shows every data point + underlying trend; no information hidden by aggregation |
-| **Scatter + regression** | Any two continuous variables | Adds statistical trend line with R²; quantifies relationship strength |
-| **KDE density** | Score distribution by revenue tier | Reveals distribution shape (bimodal, skewed) that histogram bin-size would obscure |
-| **Dual-axis line+bar** | Market trend + film count | Two metrics on different scales in one chart without misleading comparisons |
-| **Multi-line trend** | Studio performance over time | Each studio as its own line shows divergence and convergence over time |
+| Chart Type                | Used For                           | Why Better Than Bar Chart                                                              |
+| ------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------- |
+| **Lollipop**              | Genre avg vs. median               | Shows two values simultaneously; reduces ink; reveals skew when mean ≠ median          |
+| **Line + fill**           | Profit rate & ROI by budget tier   | Makes trend direction unmistakable; fill communicates area-under-curve                 |
+| **Log-log scatter**       | Budget vs. worldwide gross         | Compresses 5 orders of magnitude; reveals power-law structure invisible on linear axes |
+| **Scatter + rolling avg** | RT score vs. box office            | Shows every data point + underlying trend; no information hidden by aggregation        |
+| **Scatter + regression**  | Any two continuous variables       | Adds statistical trend line with R²; quantifies relationship strength                  |
+| **KDE density**           | Score distribution by revenue tier | Reveals distribution shape (bimodal, skewed) that histogram bin-size would obscure     |
+| **Dual-axis line+bar**    | Market trend + film count          | Two metrics on different scales in one chart without misleading comparisons            |
+| **Multi-line trend**      | Studio performance over time       | Each studio as its own line shows divergence and convergence over time                 |
 
-> **General rule:** Use bar charts only when comparing discrete, unordered categories where bar height is the *entire* message. For ranked categories → lollipop. For trends → line. For two continuous variables → scatter. For distributions → KDE.
+> **General rule:** Use bar charts only when comparing discrete, unordered categories where bar height is the _entire_ message. For ranked categories → lollipop. For trends → line. For two continuous variables → scatter. For distributions → KDE.
 
 ---
 
 ## 9. Final Summary
 
-| Objective | Key Finding | Statistic | Recommendation |
-|-----------|-------------|-----------|----------------|
-| 1 — Genre Revenue | Sci-Fi/Fantasy and Action dominate per-film earnings | $80.9M & $62.3M avg | Lead slate with Sci-Fi, Action, Animation |
-| 2 — Budget vs ROI | $100–200M tier has the best risk-adjusted profit rate | 93.1% profit rate | Target $100M–$200M per tent-pole |
-| 3 — Critical Quality | Certified Fresh films earn 30% more than Rotten films | +$10.8M avg premium | Invest in quality — target Certified Fresh |
-| Bonus — Market | Market grew 26%; concentrated on fewer bigger releases | $24.5B → $30.9B | Release 2–3 large films per year |
-| Bonus — Studios | Disney earns 2× nearest rival per film | $417M vs $230M avg | Benchmark BV model: IP, family, quality |
-| Bonus — Rating | PG-13 earns the most; R is significantly lower | $56.5M vs $23.2M avg | Target PG-13 for all tent-pole greenlights |
+| Objective            | Key Finding                                            | Statistic            | Recommendation                             |
+| -------------------- | ------------------------------------------------------ | -------------------- | ------------------------------------------ |
+| 1 — Genre Revenue    | Sci-Fi/Fantasy and Action dominate per-film earnings   | $80.9M & $62.3M avg  | Lead slate with Sci-Fi, Action, Animation  |
+| 2 — Budget vs ROI    | $100–200M tier has the best risk-adjusted profit rate  | 93.1% profit rate    | Target $100M–$200M per tent-pole           |
+| 3 — Critical Quality | Certified Fresh films earn 30% more than Rotten films  | +$10.8M avg premium  | Invest in quality — target Certified Fresh |
+| Bonus — Market       | Market grew 26%; concentrated on fewer bigger releases | $24.5B → $30.9B      | Release 2–3 large films per year           |
+| Bonus — Studios      | Disney earns 2× nearest rival per film                 | $417M vs $230M avg   | Benchmark BV model: IP, family, quality    |
+| Bonus — Rating       | PG-13 earns the most; R is significantly lower         | $56.5M vs $23.2M avg | Target PG-13 for all tent-pole greenlights |
 
 ---
 
@@ -459,13 +466,13 @@ Why each chart type was chosen over standard bar charts:
 
 ### Data Sources
 
-| Source | Description | Scale |
-|--------|-------------|-------|
-| **Box Office Mojo** | Domestic & foreign theatrical releases, 2010–2018 | 3,387 films |
-| **The Numbers** | Production budgets and worldwide gross figures | 5,782 films |
-| **TMDB** | Genre IDs, popularity, and vote averages | 26,517 films |
-| **Rotten Tomatoes Movie Info** | MPAA rating, genre, director, box office | 1,560 films |
-| **Rotten Tomatoes Reviews** | Individual critic reviews with fresh/rotten label | 54,432 reviews |
+| Source                         | Description                                       | Scale          |
+| ------------------------------ | ------------------------------------------------- | -------------- |
+| **Box Office Mojo**            | Domestic & foreign theatrical releases, 2010–2018 | 3,387 films    |
+| **The Numbers**                | Production budgets and worldwide gross figures    | 5,782 films    |
+| **TMDB**                       | Genre IDs, popularity, and vote averages          | 26,517 films   |
+| **Rotten Tomatoes Movie Info** | MPAA rating, genre, director, box office          | 1,560 films    |
+| **Rotten Tomatoes Reviews**    | Individual critic reviews with fresh/rotten label | 54,432 reviews |
 
 ### Limitations
 
@@ -473,6 +480,19 @@ Why each chart type was chosen over standard bar charts:
 - Critical reception analysis uses only **299 matched films** — small sample, directional finding only
 - TN production budgets **do not include P&A** (print & advertising) spend, which typically equals 50–100% of the production budget
 - Genre classification differs between RT (text labels) and TMDB (IDs) — both used independently
+
+---
+
+## 11. Contributors
+
+Thanks to everyone who worked on this project:
+
+|                                                                                                     | Contributor        | GitHub                                               |
+| --------------------------------------------------------------------------------------------------- | ------------------ | ---------------------------------------------------- |
+| <img src="https://github.com/Chelimo-Chebet.png" width="48" height="48" style="border-radius:50%"/> | **Chelimo Chebet** | [@Chelimo-Chebet](https://github.com/Chelimo-Chebet) |
+| <img src="https://github.com/Orandifelix.png" width="48" height="48" style="border-radius:50%"/>    | **Orandifelix**    | [@Orandifelix](https://github.com/Orandifelix)       |
+| <img src="https://github.com/contributor3.png" width="48" height="48" style="border-radius:50%"/>   | **Contributor 3**  | [@contributor3](https://github.com/contributor3)     |
+| <img src="https://github.com/contributor4.png" width="48" height="48" style="border-radius:50%"/>   | **Contributor 4**  | [@contributor4](https://github.com/contributor4)     |
 
 ---
 
@@ -499,5 +519,3 @@ Why each chart type was chosen over standard bar charts:
 ```
 
 ---
-
-*Produced using Python 3 · pandas · NumPy · Seaborn · Matplotlib · SciPy*
