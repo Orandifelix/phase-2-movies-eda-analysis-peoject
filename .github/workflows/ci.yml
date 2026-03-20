@@ -125,7 +125,7 @@ jobs:
             cleaned_data/cleaned_bom_movie_gross.csv \
             cleaned_data/cleaned_tn_movie_budgets.csv \
             cleaned_data/cleaned_rt_movie_info.csv \
-            cleaned_data/cleaned_rt_reviews.csv; do
+            cleaned_data/views.csv; do
             if [ ! -f "$f" ]; then
               echo "MISSING: $f"
               exit 1
