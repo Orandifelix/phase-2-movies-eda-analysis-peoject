@@ -1,4 +1,4 @@
-# 🎬 Box Office Intelligence: EDA for a New Movie Studio
+# Box Office Intelligence: EDA for a New Movie Studio
 
 ### Exploratory Data Analysis Report — New Movie Studio Initiative
 

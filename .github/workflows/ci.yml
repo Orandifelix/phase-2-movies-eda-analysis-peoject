@@ -22,12 +22,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install linting tools
-        run: |
-          pip install flake8 black
+        run: pip install flake8 black
 
       - name: Check formatting with black
-        run: |
-          black --check --diff .
+        run: black --check --diff .
 
       - name: Lint with flake8
         run: |
@@ -55,15 +53,22 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          key: ${{ runner.os }}-pip-ds-v1
+          restore-keys: ${{ runner.os }}-pip-
 
-      - name: Install dependencies
+      - name: Install data science environment
         run: |
           pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install nbconvert nbformat jupyter ipykernel
+          pip install \
+            pandas \
+            numpy \
+            matplotlib \
+            seaborn \
+            scipy \
+            nbconvert \
+            nbformat \
+            jupyter \
+            ipykernel
 
       - name: Execute notebook
         run: |
