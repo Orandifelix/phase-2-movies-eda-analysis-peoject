@@ -382,7 +382,7 @@ Successful films consistently combine **scale, broad audience appeal, and strong
 
 The final deliverable is a **9-panel strategy dashboard** that consolidates all findings in a single view for non-technical stakeholders.
 
-![Strategy Dashboard](chart_dashboard_final.png)
+![Strategy Dashboard](/public/chart_dashboard_final.png)
 
 > The dashboard includes: 6 KPI headline cards (top strip) · 3 objective summary panels (row 1) · 3 diagnostic panels (row 2) · market trend, RT KDE, and runtime scatter (row 3) · 3 recommendation cards (bottom strip).
 

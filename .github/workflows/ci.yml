@@ -35,8 +35,6 @@ jobs:
             --statistics
 
   # ── 2. Execute notebook + validate outputs ─────────────────────────────
-  # Both jobs share the same runner so charts written by the
-  # notebook are immediately visible to the validation steps.
   notebook:
     name: Execute Notebook & Validate Outputs
     runs-on: ubuntu-latest
@@ -72,6 +70,17 @@ jobs:
             jupyter \
             ipykernel
 
+      - name: Confirm repo structure before running
+        run: |
+          echo "=== Repo root ==="
+          ls -1
+          echo ""
+          echo "=== original_data/ ==="
+          ls -1 original_data/
+          echo ""
+          echo "=== public/ ==="
+          ls -1 public/ 2>/dev/null || echo "(empty — will be populated by notebook)"
+
       - name: Execute notebook
         run: |
           jupyter nbconvert \
@@ -81,15 +90,26 @@ jobs:
             --inplace \
             movie_studio_EDA.ipynb
 
-      - name: Check required chart files exist
+      - name: Show all files after notebook run
         run: |
-          echo "Checking for required output charts..."
+          echo "=== PNGs found ==="
+          find . -name "*.png" ! -path "./.git/*" | sort
+          echo ""
+          echo "=== public/ contents ==="
+          ls -lh public/ 2>/dev/null || echo "(public/ not found)"
+          echo ""
+          echo "=== cleaned_data/ contents ==="
+          ls -lh cleaned_data/ 2>/dev/null || echo "(cleaned_data/ not found)"
+
+      - name: Check required chart files exist in public/
+        run: |
+          echo "Checking for required output charts in public/..."
           for f in \
-            chart1_genre.png \
-            chart2_budget.png \
-            chart3_reviews.png \
-            chart4_bonus.png \
-            chart_dashboard_final.png; do
+            public/chart1_genre.png \
+            public/chart2_budget.png \
+            public/chart3_reviews.png \
+            public/chart4_bonus.png \
+            public/chart_dashboard_final.png; do
             if [ ! -f "$f" ]; then
               echo "MISSING: $f"
               exit 1
@@ -119,6 +139,13 @@ jobs:
         with:
           name: executed-notebook
           path: movie_studio_EDA.ipynb
+          retention-days: 7
+
+      - name: Upload charts as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: charts
+          path: public/*.png
           retention-days: 7
 
   # ── 3. Commit message format check ─────────────────────────────────────
