@@ -159,12 +159,12 @@ BG     = '#F8FAFC'
 
 ## Current Contributors
 
-| Contributor          | GitHub                                               |
-| -------------------- | ---------------------------------------------------- |
-| **Chelimo Chebet**   | [@Chelimo-Chebet](https://github.com/Chelimo-Chebet) |
-| **Orandi Felix**     | [@Orandifelix](https://github.com/Orandifelix)       |
-| **Richard Oketch**   | [@contributor3](https://github.com/contributor3)     |
-| **Shadrack Basweti** | [@contributor4](https://github.com/contributor4)     |
+| Contributor          | GitHub                                                               |
+| -------------------- | -------------------------------------------------------------------- |
+| **Chelimo Chebet**   | [@Chelimo-Chebet](https://github.com/Chelimo-Chebet)                 |
+| **Orandi Felix**     | [@Orandifelix](https://github.com/Orandifelix)                       |
+| **Richard Oketch**   | [@richardoketch32806-eng](https://github.com/richardoketch32806-eng) |
+| **Shadrack Basweti** | [@symekah1999](https://github.com/symekah1999)                       |
 
 ---
 
