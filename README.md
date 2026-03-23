@@ -519,6 +519,8 @@ Thanks to everyone who worked on this project:
 │   └── chart_dashboard_final.png
 ├── movie_studio_EDA.ipynb
 ├── README.md
+├── notebook.pdf
+├── presentation.pdf
 ├── LICENSE
 ├── .gitignore
 └── CONTRIBUTING.md
